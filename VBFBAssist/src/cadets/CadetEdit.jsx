@@ -4,7 +4,7 @@ import {
   Alert, Box, Button, CircularProgress, Grid, IconButton, Paper, Stack, Tab, Table, TableBody,
   TableCell, TableHead, TableRow, Tabs, Typography
 } from '@mui/material';
-import { ArrowBack, Delete, OpenInNew, Save, UploadFile } from '@mui/icons-material';
+import { ArrowBack, Delete, FileDownload, OpenInNew, Save, UploadFile } from '@mui/icons-material';
 import { api, ApiErrorMessage, ApiFileUrl } from '../utils/ApiUtils';
 import { formatDate, yesNo } from '../utils/GridUtils';
 import { isCurrentUserAdmin } from '../utils/LoginUtils';
@@ -12,6 +12,7 @@ import { SelectInput, TextInput } from '../components/FormFields';
 import { yesNoNotSetOptions } from '../components/formOptions';
 import { ConfirmDialog } from '../components/Modals';
 import FilePicker from '../components/FilePicker';
+import { exportCadet } from './exportCadet';
 
 // One cadet: Details / Medical / Training. Admins edit (Laravel cadets/edit), leaders view (cadets/view).
 export default function CadetEdit({ id, onClose }) {
@@ -26,6 +27,7 @@ export default function CadetEdit({ id, onClose }) {
   const [message, setMessage] = useState(null);
   const [saving, setSaving] = useState(false);
   const [deleteRow, setDeleteRow] = useState(null);
+  const [exporting, setExporting] = useState(false);
 
   const load = useCallback(() => {
     api.get(`/cadets/${id}`)
@@ -90,6 +92,17 @@ export default function CadetEdit({ id, onClose }) {
     }
   };
 
+  const handleExport = async () => {
+    setExporting(true);
+    try {
+      await exportCadet(api, form, training, documents, crews);
+    }
+    catch (err) {
+      setMessage({ severity: 'error', text: ApiErrorMessage(err) });
+    }
+    setExporting(false);
+  };
+
   if (!form) return <div className="vbfb-page">{message ? <Alert severity="error">{message.text}</Alert> : <CircularProgress />}</div>;
 
   // Read-only rows for cadet leaders
@@ -113,7 +126,10 @@ export default function CadetEdit({ id, onClose }) {
     <div className="vbfb-page">
       <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1 }}>
         <Button startIcon={<ArrowBack />} onClick={onClose}>Back</Button>
-        <h3 className="vbfb-page-title" style={{ margin: 0 }}>{form.firstname} {form.lastname}</h3>
+        <h3 className="vbfb-page-title" style={{ margin: 0, flexGrow: 1 }}>{form.firstname} {form.lastname}</h3>
+        <Button variant="outlined" startIcon={<FileDownload />} onClick={handleExport} disabled={exporting}>
+          {exporting ? 'Exporting…' : 'Export'}
+        </Button>
       </Stack>
 
       {message && <Alert severity={message.severity} sx={{ mb: 2 }} onClose={() => setMessage(null)}>{message.text}</Alert>}
