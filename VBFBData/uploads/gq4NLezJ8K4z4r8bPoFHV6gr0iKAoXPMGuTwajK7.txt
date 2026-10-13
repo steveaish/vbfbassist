@@ -1,0 +1,7 @@
+dataSource="@ViewBag.tblproductconfig"
+
+<e-data-manager json="@ViewBag.dataSource" insertUrl="/Home/Insert" updateUrl="/Home/Update" removeUrl="/Home/Delete" adaptor="RemoteSaveAdaptor"></e-data-manager>
+
+
+mode="Batch" showConfirmDialog="false"
+

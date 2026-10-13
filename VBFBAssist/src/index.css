@@ -1,0 +1,134 @@
+/* VBFB Assist theme - colours sampled from the Bush Fire Service logo (src/images/logo.png) */
+:root {
+  --vbfb-green: #12654A;
+  --vbfb-green-dark: #0B4A35;
+  --vbfb-green-light: #E8F2EE;
+  --vbfb-red: #F61814;
+  --vbfb-red-dark: #C8110E;
+  --vbfb-bg: #F5F7F6;
+  --vbfb-text: #1E2A26;
+
+  /* Bootstrap overrides so react-bootstrap components pick up the brand */
+  --bs-primary: var(--vbfb-green);
+  --bs-primary-rgb: 18, 101, 74;
+  --bs-danger: var(--vbfb-red-dark);
+  --bs-danger-rgb: 200, 17, 14;
+  --bs-link-color: var(--vbfb-green);
+  --bs-link-color-rgb: 18, 101, 74;
+  --bs-link-hover-color: var(--vbfb-green-dark);
+  --bs-link-hover-color-rgb: 11, 74, 53;
+  --bs-body-bg: var(--vbfb-bg);
+  --bs-body-color: var(--vbfb-text);
+}
+
+html, body, #root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--vbfb-bg);
+  color: var(--vbfb-text);
+  font-family: Roboto, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--vbfb-green);
+  --bs-btn-border-color: var(--vbfb-green);
+  --bs-btn-hover-bg: var(--vbfb-green-dark);
+  --bs-btn-hover-border-color: var(--vbfb-green-dark);
+  --bs-btn-active-bg: var(--vbfb-green-dark);
+  --bs-btn-active-border-color: var(--vbfb-green-dark);
+  --bs-btn-disabled-bg: var(--vbfb-green);
+  --bs-btn-disabled-border-color: var(--vbfb-green);
+}
+
+/* Top bar: green with a thin red strip underneath, echoing the logo's split */
+.vbfb-navbar {
+  background: var(--vbfb-green);
+  border-bottom: 4px solid var(--vbfb-red);
+}
+
+.vbfb-navbar .navbar-brand img {
+  height: 40px;
+  width: auto;
+  background: #fff;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.vbfb-navbar .nav-link,
+.vbfb-navbar .navbar-brand,
+.vbfb-navbar .dropdown-toggle {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.vbfb-navbar .nav-link:hover,
+.vbfb-navbar .nav-link.active {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+}
+
+.vbfb-navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.vbfb-navbar .navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.vbfb-page {
+  padding: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.vbfb-page-title {
+  color: var(--vbfb-green-dark);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.vbfb-footer {
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  color: #5b6b65;
+}
+
+/* Syncfusion grid header in brand colours */
+.e-grid .e-headercell {
+  background: var(--vbfb-green-light);
+}
+
+/* Large touch targets on phones */
+@media (max-width: 767.98px) {
+  .vbfb-page {
+    padding: 12px;
+  }
+
+  .vbfb-navbar .nav-link {
+    padding: 12px 8px;
+  }
+}
+
+/* Keep each menu item on one line ("Bush Fire Ready", "Vehicle Maint") */
+.vbfb-navbar .nav-link {
+  white-space: nowrap;
+}
+
+/* Syncfusion material theme uses pink as its accent; swap in the brand colours */
+.e-pager .e-currentitem,
+.e-pager .e-currentitem:hover {
+  background: var(--vbfb-green) !important;
+  color: #fff !important;
+}
+
+.e-grid .e-rowcell.e-selectionbackground,
+.e-grid td.e-active {
+  background-color: var(--vbfb-green-light) !important;
+}
+
+.e-grid .e-gridcontent tr.e-row {
+  cursor: pointer;
+}
