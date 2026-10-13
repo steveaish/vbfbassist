@@ -1,0 +1,20 @@
+{
+  "Enc": "N",
+  "ServerName": "",
+  "DatabaseName": "bedfordale_vbfbassist",
+  "Username": "",
+  "Password": "",
+  "APIKEY": "",
+  "UserKeyHours": 12,
+  "UploadsPath": "C:\\VBFBData\\uploads",
+  "AppUrl": "http://localhost:5183",
+  "SmtpHost": "mail.smtp2go.com",
+  "SmtpPort": 2525,
+  "SmtpUsername": "",
+  "SmtpPassword": "",
+  "SmtpUseSsl": true,
+  "MailFromAddress": "noreply@vbfbassist.com",
+  "MailFromName": "VBFB Assist",
+  "SmsEmailDomain": "sms.clicksend.com",
+  "SmsFromAddress": "steveaish@hotmail.com"
+}

@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>VBFB_API</RootNamespace>
+    <AssemblyName>VBFB_API</AssemblyName>
+    <!-- Entity classes keep the Laravel table names (users, profiles, ...) -->
+    <NoWarn>$(NoWarn);CS8981</NoWarn>
+    <!-- Local builds get YY.MMDD.HH.MM-local; CI overrides InformationalVersion from CHANGES.md -->
+    <InformationalVersion>$([System.DateTime]::Now.ToString("yy.MMdd.HH.mm"))-local</InformationalVersion>
+    <!-- Build straight into C:\TonicApps\VBFB_API: no Debug\ / Release\ / net10.0\ subfolders -->
+    <BaseOutputPath>C:\TonicApps\VBFB_API</BaseOutputPath>
+    <OutputPath>C:\TonicApps\VBFB_API\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <!-- Same for obj\ (restore files still live at obj\ itself) -->
+    <IntermediateOutputPath>obj\</IntermediateOutputPath>
+    <!-- English only: no cs\, de\, fr\ ... satellite resource folders -->
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="10.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <!-- no contentfiles: they add BuildHost-net472\ and BuildHost-netcore\ to the output -->
+      <IncludeAssets>runtime; build; native; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="Syncfusion.Pdf.Net.Core" Version="31.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="VBFB_API.dat" CopyToOutputDirectory="PreserveNewest" Condition="Exists('VBFB_API.dat')" />
+  </ItemGroup>
+
+</Project>

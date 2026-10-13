@@ -1,0 +1,20 @@
+{
+  "Enc": "Y",
+  "ServerName": "TonicNZ1",
+  "DatabaseName": "bedfordale_vbfbassist",
+  "Username": "sa",
+  "Password": "DjbVC1IbEFsp7+E1BxkzOO3GpAEiMP0r+JbiSgu81cM=",
+  "APIKEY": "a24b37e0-5ab7-4daf-a797-8a88502953e2",
+  "UserKeyHours": 12,
+  "UploadsPath": "C:\\DevPlay\\VBFBData\\uploads",
+  "SmtpHost": "mail.smtp2go.com",
+  "SmtpPort": 2525,
+  "SmtpUsername": "exobiz@exobiz.com.au",
+  "SmtpPassword": "jNCfeReTD/MTUJyMNd44hbWpnMVpkKfTmKDyUB5ZZsQ=",
+  "SmtpUseSsl": true,
+  "MailFromAddress": "noreply@vbfbassist.com",
+  "MailFromName": "VBFB Assist",
+  "SmsEmailDomain": "sms.clicksend.com",
+  "SmsFromAddress": "steveaish@hotmail.com",
+  "AppUrl": "http://localhost:5183"
+}
